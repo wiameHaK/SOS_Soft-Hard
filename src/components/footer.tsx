@@ -50,6 +50,11 @@ export default function Footer() {
                   Nos Services
                 </a>
               </li>
+                <li>
+                <a href="#case-studies" className="text-gray-400 hover:text-red-500 transition-colors">
+                  Études de Cas
+                </a>
+              </li>
               <li>
                 <a href="#testimonials" className="text-gray-400 hover:text-red-500 transition-colors">
                   Témoignages

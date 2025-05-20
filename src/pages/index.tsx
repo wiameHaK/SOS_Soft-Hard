@@ -1,7 +1,9 @@
 import HeroSlider from "@/components/hero-slider"
 import ServiceCards from "@/components/service-cards"
 import Testimonials from "@/components/testimonials"
-import CaseStudies from '@/components/case-studies-slider';
+import CaseStudies from '@/components/case-studies-slider'
+import ContactSection from "@/components/contact-section";
+
 export default function Home() {
   return (
     <main>
@@ -33,6 +35,16 @@ export default function Home() {
           <Testimonials />
         </div>
       </section>
+         {/* Contact Section */}
+      <section id="contact" className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">
+            Nous <span className="text-red-600">Contacter</span>
+          </h2>
+          <ContactSection />
+        </div>
+      </section>
+
           
       </main>
   );

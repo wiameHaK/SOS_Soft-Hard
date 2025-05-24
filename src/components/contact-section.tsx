@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -26,33 +25,52 @@ export default function ContactSection() {
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false)
-      setIsSubmitted(true)
-
-      toast({
-        title: "Message envoyé",
-        description: "Nous vous répondrons dans les plus brefs délais.",
-        duration: 5000,
+    try {
+      const response = await fetch('/api/sendEmail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       })
 
-      // Reset form after a delay
-      setTimeout(() => {
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          subject: "",
-          message: "",
+      if (response.ok) {
+        setIsSubmitted(true)
+        toast({
+          title: "Message envoyé",
+          description: "Nous vous répondrons dans les plus brefs délais.",
+          duration: 5000,
         })
-        setIsSubmitted(false)
-      }, 3000)
-    }, 1500)
+
+        // Réinitialiser le formulaire après un délai
+        setTimeout(() => {
+          setFormData({
+            name: "",
+            email: "",
+            phone: "",
+            subject: "",
+            message: "",
+          })
+          setIsSubmitted(false)
+        }, 3000)
+      } else {
+        throw new Error('Erreur lors de l\'envoi')
+      }
+    } catch (error) {
+      console.error(error)
+      toast({
+        title: "Erreur",
+        description: "Une erreur est survenue lors de l'envoi du message.",
+        duration: 5000,
+        variant: "destructive",
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -234,7 +252,7 @@ export default function ContactSection() {
                   )}
                 </Button>
               </form>
-            )}
+            )} 
           </div>
         </div>
       </div>

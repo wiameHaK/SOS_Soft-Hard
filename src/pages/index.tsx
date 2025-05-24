@@ -2,6 +2,8 @@ import HeroSlider from "@/components/hero-slider"
 import ServiceCards from "@/components/service-cards"
 import Testimonials from "@/components/testimonials"
 import CaseStudies from '@/components/case-studies-slider'
+import ChatWidget from "@/components/chat-widget"
+
 import ContactSection from "@/components/contact-section";
 
 export default function Home() {
@@ -35,6 +37,8 @@ export default function Home() {
           <Testimonials />
         </div>
       </section>
+      
+
          {/* Contact Section */}
       <section id="contact" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -44,6 +48,8 @@ export default function Home() {
           <ContactSection />
         </div>
       </section>
+  {/* Chat Widget */}
+      <ChatWidget />
 
           
       </main>

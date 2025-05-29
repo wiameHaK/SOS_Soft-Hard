@@ -67,6 +67,9 @@ export default function Header() {
               <a href="#services" className="text-gray-700 hover:text-red-600 font-medium transition-colors">
                 Nos Services
               </a>
+                <a href="#case-studies" className="text-gray-700 hover:text-red-600 font-medium transition-colors">
+                Études de Cas
+              </a>
               <a href="#testimonials" className="text-gray-700 hover:text-red-600 font-medium transition-colors">
                 Témoignages
               </a>
@@ -99,6 +102,13 @@ export default function Header() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Nos Services
+              </a>
+               <a
+                href="#case-studies"
+                className="text-gray-700 hover:text-red-600 font-medium transition-colors py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Études de Cas
               </a>
               <a
                 href="#testimonials"

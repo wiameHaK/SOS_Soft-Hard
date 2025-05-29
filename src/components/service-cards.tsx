@@ -1,5 +1,6 @@
 "use client"
 
+
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Server, PenToolIcon as Tool, Database, ArrowRight, X, CheckCircle } from "lucide-react"
@@ -96,6 +97,7 @@ export default function ServiceCards() {
   }, [isModalOpen])
 
   const openModal = (service: (typeof services)[0]) => {
+    console.log("openModal called with:", service);
     setSelectedService(service)
     setIsModalOpen(true)
   }
@@ -120,7 +122,7 @@ export default function ServiceCards() {
           >
             <Card className="h-full transition-all duration-300 hover:shadow-lg overflow-hidden">
               <motion.div
-                className="absolute inset-0 bg-gradient-to-b from-red-50 to-transparent opacity-0"
+                className="absolute inset-0 bg-gradient-to-b from-red-50 to-transparent opacity-0 pointer-events-none"
                 animate={{ opacity: hoveredCard === service.id ? 0.5 : 0 }}
                 transition={{ duration: 0.3 }}
               />
@@ -139,13 +141,13 @@ export default function ServiceCards() {
               </CardHeader>
 
               <CardContent className="text-center">
-                <CardDescription className="text-base text-gray-600">{service.description}</CardDescription>
+                <CardDescription className="text-lg text-gray-600">{service.description}</CardDescription>
               </CardContent>
 
               <CardFooter className="flex justify-center pb-6">
                 <Button
                   variant="outline"
-                  className="border-red-600 text-red-600 hover:bg-red-50 hover:text-red-700 group"
+                  className="border-red-600 text-red-600 hover:bg-red-50 hover:text-red-700 group text-base"
                   onClick={() => openModal(service)}
                 >
                   En savoir plus
